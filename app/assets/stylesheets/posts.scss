@@ -1,0 +1,29 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#tabcontrol a {
+	display: inline-block;
+	border-width: 0px 1px 0px 1px;
+	border-style: solid;
+	border-color: #66FF66;
+	padding: 0.5em 0.7em;
+	text-decoration: none; /* リンクの下線を消す */
+	color: black; /* 文字色 */
+	background-color: white;
+	font-weight: 600; /* 文字の太さ */
+	position: relative; /* z-indexの調整のため */
+}
+
+#tabcontrol a:hover {
+	background-color: #66FF66; /* マウスが載った時背景が変わる */
+}
+
+#tabbody div {
+	border: 1px solid #66FF66;
+	margin-top: -1px;
+	padding: 2em;
+	background-color: white;
+	position: relatiive; /* z-indexの調整のため */
+	z-index: 0; /* 最も奥に配置するため */
+}

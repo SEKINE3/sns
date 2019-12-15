@@ -1,0 +1,79 @@
+// Place all the styles related to the contacts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#modal-content {
+  display: none;
+  width: 50%;
+  height: 70%;
+  padding: 20px 25px;
+  border: solid 2px black;
+  border-radius: 0.75em;
+  background-color: white;
+  z-index: 2;
+  position:fixed;
+  overflow-y:scroll;
+}
+
+#modal-overlay {
+  display:none;
+  width: 100%;
+  height: 150%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  position: fixed;
+}
+
+button {
+  width: 200px;
+  height: 70px;
+  font-size: 1.5em;
+  color: #66ff66;
+  background-color: white;
+  border: solid 3px #66ff66;
+  border-radius: 40px;
+  transition: .2s;
+}
+
+button:hover {
+  background: #66ff66;
+  color: white;
+}
+
+.contact {
+  font-size: 30px;
+  margin-top: 25px;
+  text-align: center;
+}
+
+.contact-title {
+  font-size: 18px;
+  margin-left: 20px;
+}
+
+.contact-field {
+  width: 60%;
+  height: 35px;
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+.contact-body {
+  width: 90%;
+  height: 120px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.contact-submit {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#modal-close {
+  cursor: pointer;
+  margin-left: 90%;
+}
+

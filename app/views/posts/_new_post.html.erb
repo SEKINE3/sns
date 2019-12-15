@@ -1,0 +1,17 @@
+<button id="modal-open">投稿する</button>
+	<div id="modal-content">
+		<div id="modal-overlay"></div>
+		<%= form_for(@post) do |f| %>
+			<p class="post-form">
+				<%= f.text_area :body %>
+			</p>
+
+			<p class="contact-form">
+				<%= f.submit "送信する" %>
+			</p>
+		<% end %>
+		<div id="modal-close" style="cursor: pointer">閉じる</div>
+	</div>
+
+
+<script src="js/modal.js"></script>

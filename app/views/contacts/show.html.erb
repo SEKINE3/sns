@@ -1,0 +1,61 @@
+<div class="container">
+	<div class="row">
+		<%= @user.contacts.each_with_index do |contact, index| %>
+			<div class="col-4">
+				<button id="modal-open">作成する</button>
+				<div id="contact-title_<%= index %>">
+					<%= contact.title %>
+				</div>
+				<% if contact.reply.present? %>
+					<div class="contact-update">
+						回答日:<%= contact.update_at %>
+					</div>
+				<% else %>
+					<div class="contact-create">
+						お問い合わせ日:<%= contact.created_at %>
+						返信をお待ちください
+					</div>
+				<% end %>
+			</div>
+			<div class="col-8">
+				<div id="contact-content_<%= index %>">
+					<%= contact.title %>
+					<%= contact.body %>
+					<% if contact.reply.present? %>
+						<p>@user.name 様</p>
+						<p>お問い合わせありがとうございます</p>
+						<%= contact.reply %>
+					<% end %>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+
+<div id="modal-content">
+	<div id="modal-overlay"></div>
+	<div class="contact">お問い合わせフォーム</div>
+	<%= form_for(@contact) do |f| %>
+		<p class="contact-title">返信先メールアドレス(任意)</p>
+		<p class="contact-field">
+			<%= f.text_field :mail %>
+		</p>
+		<p class="contact-title">件名(必須)</p>
+		<p class="contact-field">
+			<%= f.text_field :title %>
+		</p>
+		<p class="contact-title">お問い合わせ内容(必須)</p>
+		<p class="contact-body">
+			<%= f.text_area :body %>
+		</p>
+		<p class="contact-submit">
+			<%= f.submit "送信する" %>
+		</p>
+	<% end %>
+	<div id="modal-close">閉じる</div>
+</div>
+
+
+<script src="js/modal.js"></script>
+<script src="js/contact.js"></script>

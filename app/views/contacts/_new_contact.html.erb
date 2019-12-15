@@ -1,0 +1,32 @@
+<button id="modal-open">作成する</button>
+
+<div id="modal-content">
+	<div id="modal-overlay"></div>
+	<div class="contact">お問い合わせフォーム</div>
+	<%= form_for(@contact) do |f| %>
+		<p class="contact-title">
+			<%= f.label :返信先メールアドレス(任意) %>
+		</p>
+		<p class="contact-field">
+			<%= f.text_field :mail %>
+		</p>
+
+		<p class="contact-title">
+			<%= f.label :件名(必須) %>
+		</p>
+			<%= f.text_field :title %>
+		</p>
+		<p class="contact-title">
+			<%= f.label :お問い合わせ内容(必須) %>
+		<p class="contact-body">
+			<%= f.text_area :body %>
+		</p>
+		<p class="contact-submit">
+			<%= f.submit "送信する" %>
+		</p>
+	<% end %>
+	<div id="modal-close">閉じる</div>
+</div>
+
+
+<script src="js/modal.js"></script>

@@ -1,0 +1,36 @@
+<% if user_signed_in? %>
+		<%= form_for [@post, @comment] do |f| %>
+			<%= f.text_field :body %>
+			<%= f.submit 'コメントする' %>
+		<% end %>
+<% end %>
+
+
+
+<%= attachment_image_tag @post.user,:profile_image %>
+<%= @post.user.name %>
+<%= @post.body %>
+<% if @post.post_image.present? %>
+	<%= attachment_image_tag @post, :post_image %>
+<% end %>
+<% if @post.post_video.file.present? %>
+	<%= @post.post_video %>
+<% end %>
+
+<%= @comments.each do |comment| %>
+	<%= attachment_image_tag comment.user,:profile_image %>
+	<%= comment.user.name %>
+	<%= comment.body %>
+	<% if comment.comment_image.present? %>
+		<%= attachment_image_tag comment, :comment_image %>
+	<% end %>
+	<% if comment.comment_video.present? %>
+		<%= commet.comment_video %>
+	<% end %>
+<% end %>
+
+
+
+<div id="favorite_btn">
+	<%= render template: "favorites/like", post: @post, favorite: @favorite %>
+</div>

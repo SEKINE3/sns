@@ -1,0 +1,73 @@
+<div class="container">
+	<div class="row">
+		<div class="col-6 col-offset2">
+			<p id="tabcontrol">
+			   <a href="#tabpage1">最新の投稿</a>
+			   <%# hrefとidの属性値(tabpage1)を一致させページ内リンクとして機能させる %>
+			   <a href="#tabpage2">話題の投稿</a>
+			   <%# hrefとidの属性値(tabpage2)を一致させページ内リンクとして機能させる %>
+			   	<div id="tabbody">
+				   <div id="tabpage1">
+				   		<% @posts.each do |post| %>
+							<%= image_tag post.user.profile_image.url %>
+							<%= post.user.name %>
+							<%= post.body %>
+							<% if post.post_image.present? %>
+								<%= image_tag post.post_image.url %>
+							<% end %>
+							<% if post.post_video.file.present? %>
+								<%= post.post_video %>
+							<% end %>
+						<% end %>
+					</div>
+				   	<div id="tabpage2">
+				   		<%= @all_ranks.each do |post| %>
+				   			<%= image_tag post.user.profile_image.url %>
+							<%= post.user.name %>
+							<%= post.body %>
+							<% if post.post_image.present? %>
+								<%= image_tag post.post_image.url %>
+							<% end %>
+							<% if post.post_video.file.present? %>
+								<%= post.post_video %>
+							<% end %>
+				   		<% end %>
+				   	</div>
+				</div>
+			</p>
+		</div>
+		<div class="col-2">
+			<p>人気のユーザー</p>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	var tabs = document.getElementById('tabcontrol').getElementsByTagName('a');
+	var pages = document.getElementById('tabbody').getElementsByTagName('div');
+
+	function changeTab() {
+		var targetid = this.href.substring(this.href.indexOf('#')+1,this.href.length);
+		for(var i=0; i<pages.length; i++) {
+	      if( pages[i].id != targetid ) {
+	         pages[i].style.display = "none";
+	      }
+	      else {
+	         pages[i].style.display = "block";
+	      }
+	    }
+
+	    for(var i=0; i<tabs.length; i++) {
+      		tabs[i].style.zIndex = "0";
+		}
+		this.style.zIndex = "10";
+
+		return false;
+		}
+
+		for(var i=0; i<tabs.length; i++) {
+   			tabs[i].onclick = changeTab;
+		}
+
+		tabs[0].onclick();
+</script>
